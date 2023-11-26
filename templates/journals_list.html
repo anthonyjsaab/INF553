@@ -6,7 +6,7 @@
 </head>
 <body>
 {% for journal in page_obj %}
-    {{ journal.0 }}. {{ journal.1 }}<br>
+    <a href="/{{ journal.1 }}">{{ journal.0 }}. {{ journal.1 }}</a><br>
 {% endfor %}
 
 <div class="pagination">
