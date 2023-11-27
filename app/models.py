@@ -19,13 +19,12 @@ class ArticaleGrant(models.Model):
 
 
 class ArticleAuthor(models.Model):
-    article = models.OneToOneField('PubmedArticle', models.DO_NOTHING, primary_key=True)  # The composite primary key (article_id, author id) found, that is not supported. The first column is selected.
+    article = models.ForeignKey('PubmedArticle', models.DO_NOTHING, primary_key=True)  # The composite primary key (article_id, author id) found, that is not supported. The first column is selected.
     author_id = models.ForeignKey('PubmedAuthor', models.DO_NOTHING, db_column='author id')  # Field renamed to remove unsuitable characters.
 
     class Meta:
         managed = False
         db_table = 'article_author'
-        unique_together = (('article', 'author_id'),)
 
 
 class ArticleCoi(models.Model):

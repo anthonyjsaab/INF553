@@ -15,7 +15,7 @@
         Authors:
         <ul>
             {% for author in article.articleauthor_set.all %}
-                <li><a href="{% url 'author' author.author_id %}">{{ author.author_name }}</a></li>
+                <li><a href="{% url 'author' author.author_id.author_id %}">{{ author.author_id.author_name }}</a></li>
             {% endfor %}
         </ul>
         {% if article.articalegrant %}

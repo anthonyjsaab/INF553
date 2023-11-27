@@ -27,6 +27,6 @@ def journal_page(request, journal_title):
 
 
 def author_page(request, author_id):
-    author_name = PubmedAuthor.objects.filter(author_id=11842018)[0].author_name
+    author_name = PubmedAuthor.objects.filter(author_id=author_id)[0].author_name
     articles = PubmedArticle.objects.filter(articleauthor__author_id=author_id).order_by('-year', 'journal_title')
     return render(request, 'author_page.html', {'articles': articles, 'author_name': author_name})
