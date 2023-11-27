@@ -7,7 +7,7 @@
 <body>
 <h1>Journal: {{ journal_title }}</h1>
 {% for author in page_obj %}
-    <a href="/{{ author.1 }}">{{ author.0 }}. {{ author.1 }}</a><br>
+    <a href="/author/{{ author.2 }}">{{ author.0 }}. {{ author.1 }}</a><br>
 {% endfor %}
 
 <div class="pagination">

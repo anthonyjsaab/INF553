@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Author: {{ author_name }}</title>
+</head>
+<body>
+<h1>Journal: {{ journal_title }}</h1>
+{% for article in articles %}
+    <li>
+        <strong>{{ article.title }}</strong><br>
+        Year: {{ article.year }}<br>
+        <a href="{{ article.pubmed_link }}" target="_blank">Pubmed Link</a><br>
+        Journal: <a href="{% url 'journal' article.journal_title %}">{{ article.journal_title }}</a><br>
+        Authors:
+        <ul>
+            {% for author in article.articleauthor_set.all %}
+                <li><a href="{% url 'author' author.author_id %}">{{ author.author_name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% if article.articalegrant %}
+            Grant info: {{ article.articalegrant.grant.grant_val }}<br>
+        {% endif %}
+        {% if article.articlecoi %}
+            Conflict of interest: {{ article.articlecoi.coi_text }}<br>
+        {% endif %}
+    </li>
+{% endfor %}
+</body>
+</html>
