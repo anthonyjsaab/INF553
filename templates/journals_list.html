@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Start page</title>
 </head>
 <body>
 {% for journal in page_obj %}
-    <a href="/{{ journal.1 }}">{{ journal.0 }}. {{ journal.1 }}</a><br>
+    <a href="journal/{{ journal.1 }}">{{ journal.0 }}. {{ journal.1 }}</a><br>
 {% endfor %}
 
 <div class="pagination">

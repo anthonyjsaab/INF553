@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Journal: {{ journal_title }}</title>
 </head>
 <body>
+<h1>Journal: {{ journal_title }}</h1>
 {% for author in page_obj %}
     <a href="/{{ author.1 }}">{{ author.0 }}. {{ author.1 }}</a><br>
 {% endfor %}
