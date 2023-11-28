@@ -27,17 +27,8 @@
 </nav>
 <main class="container">
     <table class="table caption-top">
-        <caption>List of users</caption>
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-        </tr>
-        </thead>
-        <tbody>
         {% block table_rows %}
         {% endblock %}
-        </tbody>
     </table>
     {% block main %}
     {% endblock %}

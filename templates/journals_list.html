@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 {% block table_rows %}
+    <caption>List of Journals</caption>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for journal in page_obj %}
         <tr>
             <td>{{ journal.0 }}</td>
             <td><a href="journal/{{ journal.1 }}">{{ journal.1 }}</a></td>
         </tr>
-
     {% endfor %}
+    </tbody>
+
 {% endblock %}
 {% block main %}
+    <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
     <nav>
         <ul class="pagination">
             {% if page_obj.has_previous %}

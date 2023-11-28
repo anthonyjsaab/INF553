@@ -4,27 +4,49 @@
         Journal: {{ journal_title }}
     </li>
 {% endblock %}
-{% block main %}
-    <h1>Journal: {{ journal_title }}</h1>
+{% block table_rows %}
+    <caption>List of Authors</caption>
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for author in page_obj %}
-        <a href="/author/{{ author.2 }}">{{ author.0 }}. {{ author.1 }}</a><br>
+        <tr>
+            <td>{{ author.0 }}</td>
+            <td><a href="/author/{{ author.2 }}">{{ author.1 }}</a></td>
+        </tr>
     {% endfor %}
+    </tbody>
 
-    <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
+{% endblock %}
+{% block main %}
+    <span class="current">
             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
     </span>
-    </div>
+    <nav>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">first</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link" href="?page=1">first</a></li>
+                <li class="page-item disabled"><a class="page-link" href="?page=1">&lt;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled"><a class="page-link"
+                                                  href="?page={{ page_obj.paginator.num_pages }}">&gt;</a></li>
+                <li class="page-item disabled"><a class="page-link"
+                                                  href="?page={{ page_obj.paginator.num_pages }}">last</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 {% endblock %}
