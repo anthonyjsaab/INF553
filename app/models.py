@@ -9,13 +9,12 @@ from django.db import models
 
 
 class ArticaleGrant(models.Model):
-    artical = models.OneToOneField('PubmedArticle', models.DO_NOTHING, primary_key=True)  # The composite primary key (artical_id, grant_id) found, that is not supported. The first column is selected.
+    artical = models.ForeignKey('PubmedArticle', models.DO_NOTHING, primary_key=True)  # The composite primary key (artical_id, grant_id) found, that is not supported. The first column is selected.
     grant = models.ForeignKey('GrantInfo', models.DO_NOTHING)
 
     class Meta:
         managed = False
         db_table = 'articale_grant'
-        unique_together = (('artical', 'grant'),)
 
 
 class ArticleAuthor(models.Model):
