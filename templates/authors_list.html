@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Journal: {{ journal_title }}</title>
-</head>
-<body>
-<h1>Journal: {{ journal_title }}</h1>
-{% for author in page_obj %}
-    <a href="/author/{{ author.2 }}">{{ author.0 }}. {{ author.1 }}</a><br>
-{% endfor %}
+{% extends 'base.html' %}
+{% block breadcrumbs %}
+    <li class="breadcrumb-item">
+        Journal: {{ journal_title }}
+    </li>
+{% endblock %}
+{% block main %}
+    <h1>Journal: {{ journal_title }}</h1>
+    {% for author in page_obj %}
+        <a href="/author/{{ author.2 }}">{{ author.0 }}. {{ author.1 }}</a><br>
+    {% endfor %}
 
-<div class="pagination">
+    <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -26,6 +26,5 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
-</body>
-</html>
+    </div>
+{% endblock %}

@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Start page</title>
-</head>
-<body>
-{% for journal in page_obj %}
-    <a href="journal/{{ journal.1 }}">{{ journal.0 }}. {{ journal.1 }}</a><br>
-{% endfor %}
+{% extends 'base.html' %}
+{% block main %}
+    {% for journal in page_obj %}
+        <a href="journal/{{ journal.1 }}">{{ journal.0 }}. {{ journal.1 }}</a><br>
+    {% endfor %}
 
-<div class="pagination">
+    <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -25,6 +20,5 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
-</body>
-</html>
+    </div>
+{% endblock %}
