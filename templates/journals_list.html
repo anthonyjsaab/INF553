@@ -24,23 +24,23 @@
         </span>
         <ul class="pagination">
             {% if page_obj.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page=1">first</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+                <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
                 </li>
             {% else %}
-                <li class="page-item disabled"><a class="page-link" href="?page=1">first</a></li>
-                <li class="page-item disabled"><a class="page-link" href="?page=1">&lt;</a></li>
+                <li class="page-item disabled"><a class="page-link" href="?page=1">First</a></li>
+                <li class="page-item disabled"><a class="page-link" href="?page=1">Previous</a></li>
             {% endif %}
 
             {% if page_obj.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
                 </li>
             {% else %}
                 <li class="page-item disabled"><a class="page-link"
-                                                  href="?page={{ page_obj.paginator.num_pages }}">&gt;</a></li>
+                                                  href="?page={{ page_obj.paginator.num_pages }}">Next</a></li>
                 <li class="page-item disabled"><a class="page-link"
-                                                  href="?page={{ page_obj.paginator.num_pages }}">last</a></li>
+                                                  href="?page={{ page_obj.paginator.num_pages }}">Last</a></li>
             {% endif %}
         </ul>
     </nav>
