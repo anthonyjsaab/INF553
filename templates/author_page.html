@@ -4,27 +4,55 @@
         Author: {{ author_name }}
     </li>
 {% endblock %}
-{% block main %}
-    <h1>Author: {{ author_name }}</h1>
+{% block table_rows %}
+    <caption>List of Articles from this Author</caption>
+    <thead>
+    <tr>
+        <th scope="col">Article Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">PubMed Link</th>
+        <th scope="col">Journal Title</th>
+        <th scope="col">Authors</th>
+        <th scope="col">Grant Info</th>
+        <th scope="col">Conflict of interest</th>
+    </tr>
+    </thead>
+    <tbody>
     {% for article in articles %}
-        <li>
-            <strong>{{ article.title }}</strong><br>
-            Year: {{ article.year }}<br>
-            <a href="{{ article.pubmed_link }}" target="_blank">Pubmed Link</a><br>
-            Journal: <a href="{% url 'journal' article.journal_title %}">{{ article.journal_title }}</a><br>
-            Authors:
-            <ul>
-                {% for author in article.articleauthor_set.all %}
-                    <li><a href="{% url 'author' author.author_id.author_id %}">{{ author.author_id.author_name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            {% for grant_info in article.articalegrant_set.all %}
-                Grant info: {{ grant_info.grant.grant_val }}<br>
-            {% endfor %}
-            {% for coi in article.articlecoi_set.all %}
-                Conflict of interest: {{ coi.coi_text }}<br>
-            {% endfor %}
-        </li>
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>{{ article.year }}</td>
+            <td><a href="{{ article.pubmed_link }}" target="_blank">Pubmed Link</a></td>
+            <td><a href="{% url 'journal' article.journal_title %}">{{ article.journal_title }}</a></td>
+            <td>
+                <ul>
+                    {% for author in article.articleauthor_set.all %}
+                        <li>
+                            <a href="{% url 'author' author.author_id.author_id %}">{{ author.author_id.author_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for grant_info in article.articalegrant_set.all %}
+                        <li>
+                            Grant info: {{ grant_info.grant.grant_val }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    {% for coi in article.articlecoi_set.all %}
+                        <li>
+                            Conflict of interest: {{ coi.coi_text }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
     {% endfor %}
+    </tbody>
+
 {% endblock %}
