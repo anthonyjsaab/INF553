@@ -18,10 +18,10 @@
 
 {% endblock %}
 {% block main %}
-    <span class="current">
+    <nav class="navbar navbar-expand-lg bd-navbar sticky-bottom" style="background-color: white">
+        <span class="current">
             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
         </span>
-    <nav>
         <ul class="pagination">
             {% if page_obj.has_previous %}
                 <li class="page-item"><a class="page-link" href="?page=1">first</a></li>
