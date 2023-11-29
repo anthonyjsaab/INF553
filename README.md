@@ -18,6 +18,7 @@ The variables needed are used for setting up a connection between the Web APP an
 - GRES_PORT which is the Port Number of the DB
 
 ## Running the project
+Assuming the environment checklist was followed properly, you can proceed and run the project this way:
 - Open a terminal
 - Navigate to the directory where manage.py and requirements.txt of this project are located
 - Run "python manage.py runserver"
